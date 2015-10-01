@@ -13,5 +13,11 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 COPY start.sh /sbin/start.sh
 RUN chmod 755 /sbin/start.sh
+
+#expose user/pass for each service we would need to test
+ENV SSH_USER root
+ENV SSH_PASS screencast
+#(set by wercker) ENV DB_USER 
+#(set by wercker) ENV DB_PASS 
 EXPOSE 22
 CMD ["/sbin/start.sh"]
